@@ -77,19 +77,19 @@ let vowelBonusScore = function(word) {
 let simple = {
   name: "Simple Score",
   description: "Each letter is worth 1 point.",
-  scorerFunction: simpleScore
+  scoringFunction: simpleScore
 };
 
 let bonus = {
   name: "Bonus Vowels",
   description: "Consonants are worth 1, Vowels worth 3.",
-  scorerFunction: vowelBonusScore
+  scoringFunction: vowelBonusScore
 };
 
 let scrabble = {
   name: "Scrabble",
   description: "Traditional scrabble scoring algorithm.",
-  scorerFunction: oldScrabbleScorer
+  scoringFunction: oldScrabbleScorer
 };
 
 
@@ -111,7 +111,7 @@ function scrabbleScore(word){
 let newScrabbleScorer = {
   name: "Scrabble 2.0",
   description: "OG Scrabble Scoring",
-  scorerFunction: scrabbleScore
+  scoringFunction: scrabbleScore
 }
 
 const scoringAlgorithms = [simple, bonus, newScrabbleScorer];
@@ -120,7 +120,7 @@ const scoringAlgorithms = [simple, bonus, newScrabbleScorer];
 function scorerPrompt() {
   let scoringChoice = input.question(`\nWhich scoring algorithm would you like to use?\n0 - ${simple.description}\n1 - ${bonus.description}\n2 - ${scrabble.description}\nEnter a 0, 1, or 2: `);
   scoringChoice = Number(scoringChoice);
-  return scoringAlgorithms[scoringChoice].scorerFunction;
+  return scoringAlgorithms[scoringChoice].scoringFunction;
 }
 
 let newPointStructure = {
@@ -135,8 +135,6 @@ function transform(oldPointStructure) {
   }
   return newPointStructure;
 };
-
-//this is where i left on 6/18 @ 11am
 
 
 function runProgram() {
